@@ -3,7 +3,6 @@
     <head>
         <title>Jaden Smith as a Service</title>
         <script src="jquery-1.11.0.min.js"></script>
-        <script src="mespeak/mespeak.js"></script>
     </head>
     <body>
         <center>
@@ -2365,15 +2364,16 @@
         <script>
             $('#twatter a').attr("data-text", ourSentence);
         </script>
-        <script>
-            meSpeak.loadConfig("mespeak/mespeak_config.json");
-            meSpeak.loadVoice('mespeak/voices/en/en-wm.json');
-            meSpeak.speak(ourSentence);
-        </script>
         <!--
         <button onclick="speak();">Hear it!</button>
         -->
         <h6 style="font-size:10 width:100%; text-align: center;">Thank you based god</h6>
     </center>
     </body>
+    <script src="mespeak/mespeak.js"></script>
+    <script>
+        meSpeak.loadConfig("mespeak/mespeak_config.json");
+        meSpeak.loadVoice('mespeak/voices/en/en-wm.json');
+        meSpeak.speak(ourSentence);
+    </script>
 </html>

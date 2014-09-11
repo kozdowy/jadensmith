@@ -3,6 +3,7 @@
     <head>
         <title>Jaden Smith as a Service</title>
         <script src="jquery-1.11.0.min.js"></script>
+        <script src="mespeak/mespeak.js"></script>
     </head>
     <body>
         <center>
@@ -2346,15 +2347,46 @@
 "zone",
 "zoo",
 "zoology");
-            var noun1 = [Math.floor (Math.random() * nouns.length )];
-            var noun2 = [Math.floor (Math.random() * nouns.length)];
-            ourSentence = "How can " + nouns[noun1] + "s be real if our " + nouns[noun2] + "s aren't real?";
+
+            function clickImage(){
+                document.getElementById('thiskid');
+            }
+
+            function reloadPage(){
+                window.location.reload();
+            }
+
+            function manyVowels(n){
+                var second = n.charAt(n.length-1);
+                if (second === 'a' || second === 'e' || second === 'i' || second === 'o' || second === 'u'){
+                    return true;
+                }
+                return false;
+            }
+
+
+            function pluralize(n){
+                n = String(n);
+                var last = n.charAt(n.length-1);
+                if (last === 'h' || last === 's' || last === 'x'){
+                    console.log(n);
+                    return n + "es";
+                }
+                if (last === 'y' && !manyVowels(n)){
+                    console.log(n);
+                    return n.substr(0, n.length-1) + "ies";
+                }
+                console.log(n);
+                return n + "s";
+            }
+            var noun1 = Math.floor (Math.random() * nouns.length );
+            var noun2 = Math.floor (Math.random() * nouns.length);
+            var ourSentence = "How can " + pluralize(nouns[noun1]) + " be real if our " + pluralize(nouns[noun2]) + " aren't real?";
             var thing = document.createElement('div');
             thing.innerHTML = ourSentence;
             document.getElementById('jaden').appendChild(thing);
-        //-->
         </script>
-        <img style="text-align: middle" src="jaden.jpg" height="750"/>
+        <img id="thiskid" onclick="reloadPage()" style="text-align: middle" src="jaden.jpg" height="750"/>
         <div id="twatter">
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="yellow">Tweet</a>
             <script>
@@ -2364,16 +2396,15 @@
         <script>
             $('#twatter a').attr("data-text", ourSentence);
         </script>
+        <script>
+            meSpeak.loadConfig("mespeak/mespeak_config.json");
+            meSpeak.loadVoice('mespeak/voices/en/en.json');
+            meSpeak.speak(ourSentence);
+        </script>
         <!--
         <button onclick="speak();">Hear it!</button>
         -->
         <h6 style="font-size:10 width:100%; text-align: center;">Thank you based god</h6>
     </center>
     </body>
-    <script src="mespeak/mespeak.js"></script>
-    <script>
-        meSpeak.loadConfig("mespeak/mespeak_config.json");
-        meSpeak.loadVoice('mespeak/voices/en/en-wm.json');
-        meSpeak.speak(ourSentence);
-    </script>
 </html>
